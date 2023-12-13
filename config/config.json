@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
+    "username": "vocasia",
+    "password": "vocasia",
+    "database": "garden_plants",
+    "host": "47.128.145.189",
     "dialect": "mysql"
   },
   "test": {
