@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -11,59 +9,62 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       User.hasMany(models.Comment, {
-        foreignKey: 'UserId',
-        as: 'Comments',
+        foreignKey: "UserId",
+        as: "Comments",
       });
 
       User.hasMany(models.Donasi, {
-        foreignKey: 'UserId',
-        as: 'Donasis',
+        foreignKey: "UserId",
+        as: "Donasis",
       });
 
       User.hasMany(models.Forum, {
-        foreignKey: 'UserId',
-        as: 'Forums',
+        foreignKey: "UserId",
+        as: "Forums",
       });
 
       User.hasMany(models.formPetisi, {
-        foreignKey: 'UserId',
-        as: 'Petisis',
+        foreignKey: "UserId",
+        as: "Petisis",
       });
     }
   }
-  User.init({
-    username: {
-      type: DataTypes.STRING,
-      unique: {
-        args: true,
-        msg: 'Nama pengguna sudah dipakai! Silakan pilih yang lain.'
-      }
+  User.init(
+    {
+      username: {
+        type: DataTypes.STRING,
+        unique: {
+          args: true,
+          msg: "Nama pengguna sudah dipakai! Silakan pilih yang lain.",
+        },
+      },
+      password: {
+        type: DataTypes.TEXT,
+        validate: {
+          len: [8, 20],
+        },
+      },
+      email: {
+        type: DataTypes.STRING,
+        validate: {
+          isEmail: true,
+        },
+      },
+      telepon: {
+        type: DataTypes.STRING,
+        validate: {
+          len: [3, 20],
+        },
+      },
+      isAdmin: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
-    password: {
-      type: DataTypes.TEXT,
-      validate: {
-        len: [8, 20],
-      }
-    },
-    email: {
-      type: DataTypes.STRING,
-      validate: {
-        isEmail: true,
-      }
-    },
-    telepon: {
-      type: DataTypes.STRING,
-      validate: {
-        len: [3, 20],
-      }
-    },
-    isAdmin: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
+    {
+      sequelize,
+      modelName: "User",
     }
-  }, {
-    sequelize,
-    modelName: 'User',
-  });
+  );
   return User;
 };
