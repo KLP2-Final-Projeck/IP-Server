@@ -1,11 +1,10 @@
-const { Artikel } = require('../models');
-
+const { Artikel, Comment } = require('../models');
 class artikelController {
     static async getArtikel(req, res) {
         let respons;
 
         try {
-            const artikel = await Artikel.findAll({});
+            const artikel = await Artikel.findAll({ include: Comment});
             respons = artikel;
         } catch (error) {
             respons = 'Error';

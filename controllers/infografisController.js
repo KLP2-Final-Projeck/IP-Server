@@ -50,7 +50,6 @@ class infografisController{
         }
     }
 
-
     static async putInfografis (req, res) {
         try {
             const { judul, gambar, url } = req.body;

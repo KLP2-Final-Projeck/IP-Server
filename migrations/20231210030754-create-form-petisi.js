@@ -17,7 +17,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      nomor_hp: {
+      NomorHp: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      user_id: {
+      UserId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -33,7 +33,7 @@ module.exports = {
           key: 'id',
         }
       },
-      petisi_id: {
+      PetisiId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

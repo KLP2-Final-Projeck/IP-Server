@@ -32,7 +32,7 @@ module.exports = {
           key: 'id',
         }
       },
-      userId: {
+      UserId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

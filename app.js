@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { Coment, User, Forum } = require('./models');
+const { Comment, User, Forum } = require('./models');
 const artikelController = require('./controllers/artikelController');
 const infografisController = require('./controllers/infografisController');
 
@@ -20,25 +20,25 @@ app.delete('/artikel/:id', artikelController.deleteArtikel);
 app.put('/artikel/:id', artikelController.putArtikel);
 // END Logic Artikel
 
-app.post('/coment', async function (req, res) {
+app.post('/comment', async function (req, res) {
     try {
         const body = req.body;
-        const { name, komentar, articleId } = body;
+        const { name, komentar, ArticleId } = body;
         console.log(body);
-        const userId = req.userId;
-        console.log(userId);
+        const UserId = req.UserId;
+        console.log(UserId);
         
-        const user = await User.findOne({ where: { id: userId } });
+        const user = await User.findOne({ where: { id: UserId } });
         console.log(user);
 
         if (user) {
-            const coment = await Coment.create({
+            const comment = await Comment.create({
                 name,
                 komentar,
-                articleId,
-                userId
+                ArticleId,
+                UserId
             });
-            res.status(201).json(coment);
+            res.status(201).json(comment);
         } else {
             res.status(404).json({ error: 'User Not Found' });
         }
@@ -48,11 +48,11 @@ app.post('/coment', async function (req, res) {
     }
 });
 
-app.get('/coment', async function (req, res) {
+app.get('/comment', async function (req, res) {
     let respons;
 
     try {
-        const artikel = await Coment.findAll({});
+        const artikel = await Comment.findAll({});
         respons = artikel;
         console.log(artikel);
     } catch (error) {
@@ -61,18 +61,18 @@ app.get('/coment', async function (req, res) {
     res.status(200).json(respons);
 });
 
-app.get('/coment/:id', async function (req, res) {
+app.get('/comment/:id', async function (req, res) {
     const id = req.params.id;
     let respons;
 
     try {
-        const komentars = await Coment.findOne({
+        const comment = await Comment.findOne({
             where: {
                 id: id
             }
         });
 
-        if (komentars) {
+        if (comment) {
             res.status(200).json(respons);
         } else {
             res.status(404).json({ msg: `Komentar dengan id ${id} tidak ada!` });
@@ -82,15 +82,15 @@ app.get('/coment/:id', async function (req, res) {
     }
 });
 
-app.put('/coment/:id', async function (req, res) {
+app.put('/comment/:id', async function (req, res) {
     try {
         const { name, komentar } = req.body;
         const { id } = req.params;
 
-        const komentars = await Coment.findByPk(id);
+        const komentars = await Comment.findByPk(id);
 
         if (komentars) {
-            await Coment.update({ name, komentar }, {
+            await Comment.update({ name, komentar }, {
                 where: {
                     id: id,
                 },
@@ -104,17 +104,17 @@ app.put('/coment/:id', async function (req, res) {
     }
 });
 
-app.delete('/coment/:id', async function (req, res) {
+app.delete('/comment/:id', async function (req, res) {
     const id = req.params['id'];
 
     try {
-        const coment = await Coment.destroy({
+        const comment = await Comment.destroy({
             where: {
                 id: id,
             },
         });
 
-        if (coment > 0) {
+        if (comment > 0) {
             res.status(200).json({ msg: `Data dengan ID ${id} berhasil dihapus!` });
         } else {
             res.status(404).json({ msg: `Data dengan ID ${id} tidak ditemukan!` });
@@ -161,7 +161,7 @@ app.post('/forum', async function (req, res) {
         if (forum) {
             res.status(200).json(forum);
         } else {
-            res.status(404).json({ msg: `Gagal Saat Membuat Pesan Forum!` });
+            res.status(404).json({ msg: 'Gagal Saat Membuat Pesan Forum!' });
         }
     } catch (error) {
         res.status(500).json({ msg: 'Terjadi Kesalah Saat Membuat Pesan Forum!' });

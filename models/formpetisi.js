@@ -22,10 +22,10 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true,
       }
     },
-    nomor_hp: DataTypes.INTEGER,
+    NomorHp: DataTypes.INTEGER,
     kota: DataTypes.STRING,
-    userId: DataTypes.INTEGER,
-    petisiId: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER,
+    PetisiId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'formPetisi',

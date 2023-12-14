@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     topic: DataTypes.STRING,
     thread: DataTypes.STRING,
     post: DataTypes.TEXT,
-    userId: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Forum',

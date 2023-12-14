@@ -10,17 +10,21 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       topic: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       thread: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       post: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
-      userId: {
+      UserId: {
+        allowNull: false,
         type: Sequelize.INTEGER,
-        references:{
+        references: {
           model: 'Users',
           key: 'id',
         }

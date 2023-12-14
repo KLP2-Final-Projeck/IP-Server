@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     nomor_rekening: DataTypes.INTEGER,
     formated_value: DataTypes.STRING,
     nominal_value: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Donasi',
