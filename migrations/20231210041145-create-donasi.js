@@ -15,25 +15,25 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
-      nomor_hp: {
-        type: Sequelize.INTEGER
-      },
-      nomor_rekening: {
-        type: Sequelize.INTEGER
-      },
-      formated_value: {
+      nomorHp: {
         type: Sequelize.STRING
       },
-      nominal_value: {
-        type: Sequelize.INTEGER,
+      nomorRekening: {
+        type: Sequelize.STRING
+      },
+      formatedValue: {
+        type: Sequelize.STRING
+      },
+      nominalValue: {
+        type: Sequelize.TEXT,
         allowNull: false,
+      },
+      UserId: {
+        type: Sequelize.INTEGER,
         references: {
           model: 'Users',
           key: 'id',
         }
-      },
-      UserId: {
-        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

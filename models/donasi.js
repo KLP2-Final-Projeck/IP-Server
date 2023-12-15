@@ -21,10 +21,10 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true,
       }
     },
-    nomor_hp: DataTypes.INTEGER,
-    nomor_rekening: DataTypes.INTEGER,
-    formated_value: DataTypes.STRING,
-    nominal_value: DataTypes.INTEGER,
+    nomorHp: DataTypes.STRING,
+    nomorRekening: DataTypes.STRING,
+    formatedValue: DataTypes.STRING,
+    nominalValue: DataTypes.TEXT,
     UserId: DataTypes.INTEGER
   }, {
     sequelize,

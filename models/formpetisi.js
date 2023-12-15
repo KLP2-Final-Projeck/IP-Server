@@ -22,7 +22,12 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true,
       }
     },
-    NomorHp: DataTypes.INTEGER,
+    NomorHp: {
+      type:DataTypes.INTEGER,
+      validate: {
+        len: [0, 255],
+      }
+    },
     kota: DataTypes.STRING,
     UserId: DataTypes.INTEGER,
     PetisiId: DataTypes.INTEGER

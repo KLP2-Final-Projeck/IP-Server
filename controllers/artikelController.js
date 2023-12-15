@@ -8,7 +8,7 @@ class artikelController {
         include: [
           {
             model: Comment,
-            include: [{ model: User }],
+            // include: [{ model: User}],
           },
         ],
       });
@@ -82,6 +82,7 @@ class artikelController {
       });
     }
   }
+  
   static async putArtikel(req, res) {
     try {
       const { id } = req.params;
