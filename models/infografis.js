@@ -17,11 +17,14 @@ module.exports = (sequelize, DataTypes) => {
     judul: {
       type: DataTypes.STRING,
       validate: {
-        len:[5, 40],
+        len:[0, 255],
       }
     },
-    gambar: DataTypes.TEXT,
-    url: DataTypes.TEXT
+    gambar: {
+      type: DataTypes.TEXT,
+      len: [0, 255], 
+    },
+    url: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Infografis',

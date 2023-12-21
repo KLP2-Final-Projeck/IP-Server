@@ -12,6 +12,7 @@ module.exports = {
       username: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true
       },
       password: {
         type: Sequelize.TEXT,
@@ -24,11 +25,9 @@ module.exports = {
       },
       telepon: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       isAdmin: {
         type: Sequelize.BOOLEAN,
-        allowNull: false,
       },
       createdAt: {
         allowNull: false,

@@ -43,20 +43,21 @@ class artikelController {
 
   static postArtikel(req, res) {
     const body = req.body;
-    const { titleArtikel, descArtikel, category, date, image } = body;
+    const { titleArtikel, descArtikel, author, date, category, image } = body;
 
     Artikel.create({
       titleArtikel,
       descArtikel,
-      category,
+      author,
       date,
+      category,
       image,
     })
       .then((post) => {
         res.status(201).json(post);
       })
       .catch((error) => {
-        res.status(500).json(error);
+        res.status(404).json(error);
       });
   }
 
@@ -82,15 +83,15 @@ class artikelController {
       });
     }
   }
-  
+
   static async putArtikel(req, res) {
     try {
       const { id } = req.params;
-      const { titleArtikel, descArtikel, date, category, image } = req.body;
+      const { titleArtikel, descArtikel, author, date, category, image } = req.body;
 
       const artikel = await Artikel.findByPk(id);
       if (artikel) {
-        artikel.update({ titleArtikel, descArtikel, category, date, image });
+        artikel.update({ titleArtikel, descArtikel, author, date, category, image });
         res
           .status(200)
           .json({ msg: `Data Artikel dengan id ${id} Berhasil di Update!` });

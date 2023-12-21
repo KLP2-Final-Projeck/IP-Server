@@ -13,15 +13,19 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-          len: [10, 30],
+          len: [0, 30],
         }
       },
       descArtikel: {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      date: {
+      author: {
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      date: {
+        type: Sequelize.DATE,
         allowNull: false,
       },
       category: {

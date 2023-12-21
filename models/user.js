@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
       password: {
         type: DataTypes.TEXT,
         validate: {
-          len: [8, 20],
+          len: [4, 20],
         },
       },
       email: {
@@ -54,9 +54,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       telepon: {
         type: DataTypes.STRING,
-        validate: {
-          len: [3, 20],
-        },
       },
       isAdmin: {
         type: DataTypes.BOOLEAN,
@@ -67,7 +64,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: "User",
       hooks: {
-        beforeCreate: (user, options) =>{
+        beforeCreate: (user, options) => {
           user.password = bcrypt.hashSync(user.password, saltRounds);
         },
       },
