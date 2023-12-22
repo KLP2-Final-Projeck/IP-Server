@@ -16,14 +16,11 @@ module.exports = (sequelize, DataTypes) => {
       titleArtikel: {
         type: DataTypes.STRING,
         validate: {
-          len: [0, 30],
+          len: [0, 255],
         },
       },
       descArtikel: {
         type: DataTypes.TEXT,
-        validate: {
-          len: [0, 255],
-        },
       },
       author: {
         type: DataTypes.STRING,

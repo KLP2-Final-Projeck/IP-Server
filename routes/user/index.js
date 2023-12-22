@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const userController = require('../../controllers/userController');
+const isAdmin = require('../../middlewares/isAdmin');
 
 router.post('/register', userController.userRegister);
 router.post('/login', userController.userLogin);
