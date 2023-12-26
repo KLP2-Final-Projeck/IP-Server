@@ -14,7 +14,6 @@ module.exports = {
         type: Sequelize.STRING
       },
       thread: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       post: {
