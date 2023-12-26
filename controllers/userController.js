@@ -95,23 +95,47 @@ class userController {
       });
   }
 
+  // static async userLogin(req, res, next) {
+  //   const { username, password } = req.body;
+
+  //   let user = await User.findOne({ where: { username } });
+
+  //   if (user) {
+  //     const hash = user.password;
+  //     const isValid = bcrypt.compareSync(password, hash);
+
+  //     if (isValid) {
+  //       const token = jwt.sign({ id: user.id, username: user.username, isAdmin: user.isAdmin }, secret);
+  //       res.status(200).json({ data: { token, username } });
+  //     } else {
+  //       next(new Error({ msg: 'EMAIL/PASSWORD ANDA SALAH!' }));
+  //     }
+  //   } else {
+  //     next(new Error({ msg: 'EMAIL/PASSWORD ANDA SALAH!' }));
+  //   }
+  // }
   static async userLogin(req, res, next) {
     const { username, password } = req.body;
 
-    let user = await User.findOne({ where: { username } });
+    try {
+      let user = await User.findOne({ where: { username } });
 
-    if (user) {
-      const hash = user.password;
-      const isValid = bcrypt.compareSync(password, hash);
+      if (user) {
+        const hash = user.password;
+        const isValid = bcrypt.compareSync(password, hash);
 
-      if (isValid) {
-        const token = jwt.sign({ id: user.id, username: user.username, isAdmin: user.isAdmin }, secret);
-        res.status(200).json({ data: { token } });
+        if (isValid) {
+          const { id, isAdmin } = user;
+          const token = jwt.sign({ id, username, isAdmin }, secret);
+          res.status(200).json({ data: { id, isAdmin, token, username } });
+        } else {
+          throw new Error('EMAIL/PASSWORD ANDA SALAH!');
+        }
       } else {
-        next(new Error({ msg: 'EMAIL/PASSWORD ANDA SALAH!' }));
+        throw new Error('EMAIL/PASSWORD ANDA SALAH!');
       }
-    } else {
-      next(new Error({ msg: 'EMAIL/PASSWORD ANDA SALAH!' }));
+    } catch (error) {
+      next(error);
     }
   }
 

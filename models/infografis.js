@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     gambar: {
-      type: DataTypes.TEXT,
+      type: DataTypes.TEXT('long'),
       len: [0, 255], 
     },
     url: DataTypes.STRING

@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     NomorHp: {
-      type:DataTypes.INTEGER,
+      type:DataTypes.STRING,
       validate: {
         len: [0, 255],
       }

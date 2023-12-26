@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       image: {
-        type: DataTypes.TEXT,
+        type: DataTypes.TEXT('long'),
       },
     },
     {

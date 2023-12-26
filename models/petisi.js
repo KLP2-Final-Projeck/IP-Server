@@ -20,13 +20,13 @@ module.exports = (sequelize, DataTypes) => {
         len: [0, 255],
       }
     },
-    target: DataTypes.STRING,
-    image: DataTypes.TEXT,
+    target: DataTypes.INTEGER,
+    image: DataTypes.TEXT('long'),
     url: DataTypes.TEXT,
     title: {
       type: DataTypes.STRING,
       validate: {
-        len: [5, 30],
+        len: [0, 255],
       }
     },
     hashtag: {

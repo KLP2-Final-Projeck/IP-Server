@@ -18,7 +18,7 @@ module.exports = {
         allowNull: false,
       },
       NomorHp: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       kota: {
