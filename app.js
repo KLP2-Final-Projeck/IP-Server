@@ -1,8 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { User, Donasi } = require('./models');
 const router = require('./routes/index');
-const donasiController = require('./controllers/donasiController');
+const cors = require('cors');
 
 const app = express();
 
@@ -13,6 +12,7 @@ app.get('/', function (req, res) {
     res.send('Hellow ');
 });
 
+app.use(cors());
 app.use(router);
 
 app.listen(4002, function () {

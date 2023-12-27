@@ -3,20 +3,20 @@ const { Infografis } = require('../models');
 class infografisController{
     static postInfografis(req, res) {
         const body = req.body;
-        const { judul, gambar, url } = body;
+        const { judul, url, gambar } = body;
     
         Infografis.create(
             {
                 judul,
-                gambar,
-                url
+                url,
+                gambar
             }
         )
             .then((post) => {
                 res.status(201).json(post);
             })
             .catch((error) => {
-                res.status(500).json(error)
+                res.status(404).json(error)
             });
     }
 

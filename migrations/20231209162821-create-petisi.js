@@ -14,11 +14,11 @@ module.exports = {
         allowNull: false,
       },
       target: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       image: {
-        type: Sequelize.TEXT,
+        type: Sequelize.TEXT('long'),
         allowNull: false,
       },
       url: {

@@ -4,7 +4,7 @@ class commentController{
     static async postComment (req, res) {
         try {
             const body = req.body;
-            const { name, komentar, ArtikelId } = body;
+            const { nama, komentar, ArtikelId } = body;
             const UserId = req.body.UserId;
             
             const user = await User.findOne({ where: { id: UserId } });
@@ -12,7 +12,7 @@ class commentController{
     
             if (user) {
                 const comment = await Comment.create({
-                    name,
+                    nama,
                     komentar,
                     ArtikelId,
                     UserId
@@ -64,13 +64,13 @@ class commentController{
 
     static async putComment (req, res) {
         try {
-            const { name, komentar } = req.body;
+            const { nama, komentar } = req.body;
             const { id } = req.params;
     
             const komentars = await Comment.findByPk(id);
     
             if (komentars) {
-                await Comment.update({ name, komentar }, {
+                await Comment.update({ nama, komentar }, {
                     where: {
                         id: id,
                     },

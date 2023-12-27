@@ -16,23 +16,25 @@ module.exports = (sequelize, DataTypes) => {
       titleArtikel: {
         type: DataTypes.STRING,
         validate: {
-          len: [5, 30],
+          len: [0, 255],
         },
       },
       descArtikel: {
         type: DataTypes.TEXT,
-        validate: {
-          len: [0, 255],
-        },
       },
-      date: DataTypes.STRING,
+      author: {
+        type: DataTypes.STRING,
+      },
+      date: DataTypes.DATE,
       category: {
         type: DataTypes.STRING,
         validate: {
           len: [0, 255],
         },
       },
-      image: DataTypes.TEXT,
+      image: {
+        type: DataTypes.TEXT('long'),
+      },
     },
     {
       sequelize,

@@ -14,7 +14,7 @@ module.exports = {
         allowNull: false,
       },
       gambar: {
-        type: Sequelize.TEXT,
+        type: Sequelize.TEXT('long'),
         allowNull: false,
       },
       url: {
